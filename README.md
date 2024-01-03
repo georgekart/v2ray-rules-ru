@@ -1,12 +1,12 @@
 # 简介
 
-[**V2Ray**](https://github.com/v2fly/v2ray-core) 路由规则文件加强版，可代替 V2Ray 官方 `geoip.dat` 和 `geosite.dat`，兼容 [Shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows)、[Xray-core](https://github.com/XTLS/Xray-core)、[Trojan-Go](https://github.com/p4gefau1t/trojan-go) 和 [leaf](https://github.com/eycorsican/leaf)。利用 GitHub Actions 北京时间每天早上 6 点自动构建，保证规则最新。
+[**V2Ray**](https://github.com/v2fly/v2ray-core) 路由规则文件加强版，可代替 V2Ray 官方 `geoip.dat` 和 `geosite.dat`，兼容 [Shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows)、[Xray-core](https://github.com/XTLS/Xray-core)、[Trojan-Go](https://github.com/p4gefau1t/trojan-go) 和 [leaf](https://github.com/eycorsican/leaf)。利用 GitHub Actions 北京时间每天早上 8 点 30 分自动构建，保证规则最新。
 
 ## 规则文件生成方式
 
 ### geoip.dat
 
-- 通过仓库 [@Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip) 生成
+- 通过仓库 [@rootmelo92118/geoip-custom](https://github.com/rootmelo92118/geoip-custom) 生成
 - 其中全球 IP 地址（IPv4 和 IPv6）来源于 [MaxMind GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)，`CN`（中国大陆）类别下的 IPv4 地址融合了 [ipip.net](https://github.com/17mon/china_ip_list) 和 [@gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)，`CN`（中国大陆）类别下的 IPv6 地址融合了 [MaxMind GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) 和 [@gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)
 - 新增类别（方便有特殊需求的用户使用）：
   - `geoip:cloudflare`
@@ -17,7 +17,8 @@
   - `geoip:netflix`
   - `geoip:telegram`
   - `geoip:twitter`
-
+- 新增类别
+  - 允許以ASN來調用IP數據，例如以 `geoip:as138421` 來選定 China Unicom 自治系統內所有的IP位置。
 > 希望定制 `geoip.dat` 文件？查看仓库 [@Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip)。
 
 ### geosite.dat
@@ -48,7 +49,9 @@
 - **Add Half Price List of Iran Information Technology Organization**：
   - According to [@IRConf/Iranian-Half-Price-Traffic-Websites-List](https://github.com/IRConf/Iranian-Half-Price-Traffic-Websites-List/blob/main/domains) data to `geosite:category-ir-half-price`
 - **加入中華民國台灣地區台灣網路資訊中心RPZ域名列表**：
-  - 根據 [@rootmelo92118/blocked-by-taiwan](https://github.com/rootmelo92118/blocked-by-taiwan/blob/release/blockedbytaiwan.txt) 加入到`geosite:blocked-by-taiwan` 類別中
+  - 根據 [@rootmelo92118/blocked-by-taiwan](https://github.com/rootmelo92118/blocked-by-taiwan/blob/release/twnicRPZ1.0.txt) 加入到`geosite:blocked-by-taiwan` 類別中
+- **加入中華民國內政部警政署165詐騙域名RPZ列表**：
+  - 根據 [@FutaGuard/LowTechFilter](https://filter.futa.gg/TW165-domains.txt) 加入到`geosite:blocked-by-taiwan` 類別中
 - **可添加自定义直连、代理和广告域名**：由于上游域名列表更新缓慢或缺失某些域名，所以引入**需要添加的域名**列表。[`hidden 分支`](https://github.com/Loyalsoldier/v2ray-rules-dat/tree/hidden)里的三个文件 `direct.txt`、`proxy.txt` 和 `reject.txt`，分别存放自定义的需要添加的直连、代理、广告域名，最终分别加入到 `geosite:cn`、`geosite:geolocation-!cn` 和 `geosite:category-ads-all` 类别中
 - **可移除自定义直连、代理和广告域名**：由于上游域名列表存在需要被移除的域名，所以引入**需要移除的域名**列表。[`hidden 分支`](https://github.com/Loyalsoldier/v2ray-rules-dat/tree/hidden)里的三个文件 `direct-need-to-remove.txt`、`proxy-need-to-remove.txt` 和 `reject-need-to-remove.txt`，分别存放自定义的需要从 `direct-list`（直连域名列表）、`proxy-list`（代理域名列表）和 `reject-list`（广告域名列表） 移除的域名
 
@@ -476,6 +479,7 @@ It looks like
 - [@crazy-max/WindowsSpyBlocker](https://github.com/crazy-max/WindowsSpyBlocker)
 - [@IRConf/Iranian-Half-Price-Traffic-Websites-List](https://github.com/IRConf/Iranian-Half-Price-Traffic-Websites-List/)
 - [@rootmelo92118/blocked-by-taiwan](https://github.com/rootmelo92118/blocked-by-taiwan)
+- [@FutaGuard/LowTechFilter](https://github.com/FutaGuard/LowTechFilter)
 
 ## 项目 Star 数增长趋势
 
