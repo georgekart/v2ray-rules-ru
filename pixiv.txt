@@ -1,0 +1,17 @@
+# Source: https://github.com/v2fly/domain-list-community/blob/master/data/pixiv
+! domain: 10
+! full: 0
+! keyword: 0
+! regexp: 0
+
+
+||booth.pm^
+||fanbox.cc^
+||pixiv.help^
+||pixiv.me^
+||pixiv.net^
+||pixiv.org^
+||pixiv-recommend.net^
+||pximg.net^
+||pixiv.co.jp^
+||ads-pixiv.net^
